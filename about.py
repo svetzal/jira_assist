@@ -8,12 +8,6 @@ product_owner = Persona(
         "That the software being developed satisfies the needs of its users, and is profitable for its sponsors.",
         "That the most important features of the software are prioritized and delivered first.",
         "That the team implementing the software is focused on the most important work, understands the purpose of the actions they're taking and how they relate to the purpose of the software."
-    ],
-    goals=[
-        """
-            To ensure that the Jira project description accurately reflects the purpose of the software, so that the "
-            organization and team understands their mission clearly and can stay focused on achieving it.
-        """
     ]
 )
 
