@@ -28,3 +28,8 @@ print(augmented_project.assessment)
 print("")
 print("Suggested project description:")
 print(augmented_project.suggestion)
+
+proceed = input("Would you like to update the project description? (y/n): ")
+if proceed.lower() == 'y':
+    jira.update_project_description(jira_project.key, description=augmented_project.suggestion)
+    print("Project description updated.")
