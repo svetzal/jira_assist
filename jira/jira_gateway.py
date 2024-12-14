@@ -29,6 +29,15 @@ class JiraGateway:
             auth=self.auth
         ).json()
 
+    def put(self, path, payload):
+        return requests.request(
+            "PUT",
+            f"{self.server}{path}",
+            headers=self.headers,
+            json=payload,
+            auth=self.auth
+        ).json()
+
     def search_issues(self, query):
         return self.get("/rest/api/3/search", {'jql': query})
 
@@ -36,10 +45,4 @@ class JiraGateway:
         return self.get(f"/rest/api/3/project/{project_key}", {})
 
     def update_project_description(self, key, description):
-        return requests.request(
-            "PUT",
-            f"{self.server}/rest/api/3/project/{key}",
-            headers=self.headers,
-            json={"description": description},
-            auth=self.auth
-        ).json()
+        return self.put(f"/rest/api/3/project/{key}", {"description": description})
