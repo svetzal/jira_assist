@@ -19,11 +19,12 @@ class ChatGPTGateway(LLMGateway):
         )
 
     def complete(self, messages: list, response_model):
-        response = self.client.Completion.create(
+        response = self.client.completions.create(
             model="gpt-4o",
-            messages=messages
+            messages=messages,
+            response_model=response_model
         )
-        return response_model(**response)
+        return response
 
 
 class OLlamaGateway(LLMGateway):
@@ -33,6 +34,7 @@ class OLlamaGateway(LLMGateway):
         self.client = instructor.from_openai(
             self.adapter,
             mode=instructor.Mode.JSON
+            # mode=instructor.Mode.JSON_SCHEMA,
         )
 
     def create_messages(self, message):
@@ -46,6 +48,7 @@ class OLlamaGateway(LLMGateway):
     def complete(self, messages: List, response_model):
         response = self.client.chat.completions.create(
             model=self.model,
+            temperature=0,
             messages=messages,
             response_model=response_model
         )
@@ -55,5 +58,6 @@ class OLlamaGateway(LLMGateway):
         # messages = self.create_messages(message)
         return self.adapter.completions.create(
             model=self.model,
+            temperature=0,
             prompt=message
         ).choices[0].text.strip()
