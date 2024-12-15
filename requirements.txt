@@ -3,3 +3,4 @@ pydantic
 ollama
 openai
 instructor
+pytest

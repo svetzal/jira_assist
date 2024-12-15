@@ -11,6 +11,15 @@ product_owner = Persona(
     ]
 )
 
+team_member = Persona(
+    role="Team Member",
+    concerns=[
+        "That the software being developed is of high quality.",
+        "That the software being developed is maintainable.",
+        "That the software being developed is testable."
+    ]
+)
+
 software = SoftwareBeingImplemented(
     name="JiraAssist",
     purpose="""

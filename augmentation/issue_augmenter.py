@@ -13,5 +13,5 @@ class IssueAugmentor(Augmentor):
                 "content": f"Augment the following Jira issue:\n{issue_json}"
             }
         ]
-        response = self.llm.create_completion(messages, AugmentedIssue)
+        response = self.llm.complete(messages, AugmentedIssue)
         return response

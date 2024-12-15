@@ -3,7 +3,6 @@ from typing import List
 from augmentation.augmented_project import AugmentedProject
 from augmentation.augmentor import Augmentor
 from domain.persona import Persona
-from domain.scenario import Scenario
 from domain.software_being_implemented import SoftwareBeingImplemented
 from jira.jira_project import JiraProject
 
@@ -28,5 +27,5 @@ class ProjectAugmentor(Augmentor):
                 """
             }
         ]
-        response = self.llm.create_completion(messages, AugmentedProject)
+        response = self.llm.complete(messages, AugmentedProject)
         return response

@@ -14,7 +14,7 @@ jira = JiraGateway("stacey@vetzal.com", os.environ['JIRA_API_KEY'])
 llm = OLlamaGateway()
 augmentor = ProjectAugmentor(llm)
 
-response = jira.retrieve_project('DEMO')
+response = jira.retrieve_project('JA')
 jira_project = JiraProject(**simplified_project_dict(response))
 
 print("Existing project description:")
